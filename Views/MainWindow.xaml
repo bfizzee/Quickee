@@ -9,9 +9,11 @@
     Title="MainWindow"
     AllowsTransparency="True"
     Background="DimGray"
+    Closing="Window_Closing"
+    Loaded="Window_Loaded"
     SizeToContent="WidthAndHeight"
     WindowStyle="None"
-    mc:Ignorable="d" Closing="Window_Closing">
+    mc:Ignorable="d">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
@@ -50,8 +52,6 @@
                     WindowChrome.IsHitTestVisibleInChrome="True" />
             </Grid>
         </Border>
-        <TabControl Grid.Row="1">
-            <UniformGrid x:Name="MainGrid" />
-        </TabControl>
+        <TabControl x:Name="MainTabs" Grid.Row="1" />
     </Grid>
 </Window>

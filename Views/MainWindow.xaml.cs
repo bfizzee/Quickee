@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Quickee.ViewModels;
+using System.Windows;
 
 namespace Quickee.Views
 {
@@ -14,5 +15,13 @@ namespace Quickee.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
             => Application.Current.Shutdown();
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext == null)
+                return;
+
+            ((MainViewModel)DataContext).Window = this;
+        }
     }
 }
