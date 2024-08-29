@@ -1,4 +1,5 @@
 ﻿using Fitz.Utilities;
+using Quickee.Controls;
 using Quickee.Models;
 using System.Diagnostics;
 using System.IO;
@@ -101,15 +102,7 @@ namespace Quickee.ViewModels
                 };
 
                 foreach(Button button in tab.Buttons)
-                {
-                    System.Windows.Controls.Button btn = new System.Windows.Controls.Button()
-                    {
-                        Content = button.Name,
-                        Command = new RelayCommand(() => Process.Start(button.LaunchPath, button.LaunchArgs))
-                    };
-
-                    grid.Children.Add(btn);
-                }
+                    grid.Children.Add(new LaunchButton(button.Name, button.LaunchPath, button.LaunchArgs, button.IconPath));
 
                 tabItem.Content = grid;
 
