@@ -22,6 +22,8 @@ namespace Quickee.ViewModels
 
         public ConfigViewModel Config { get; private set; }
 
+        public static bool CloseAfterLaunch { get; set; } = true;
+
         public MainViewModel()
         {
             CloseWindowCommand = new RelayCommand(() => Application.Current.Shutdown());

@@ -1,4 +1,5 @@
 ﻿using Quickee.Models;
+using Quickee.ViewModels;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -92,7 +93,11 @@ namespace Quickee.Controls
         }
 
         private void Launch()
-            => Process.Start(_buttonInfo.LaunchPath, _buttonInfo.LaunchArgs);
+        {
+            Process.Start(_buttonInfo.LaunchPath, _buttonInfo.LaunchArgs);
+            if (MainViewModel.CloseAfterLaunch)
+                Application.Current.Shutdown();
+        }
 
         private bool CanLaunch()
             => true;
