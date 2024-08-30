@@ -1,4 +1,5 @@
 ﻿using Quickee.ViewModels;
+using System.Reflection;
 using System.Windows;
 
 namespace Quickee.Views
@@ -18,6 +19,10 @@ namespace Quickee.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Version version = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(0, 0, 0);
+
+            TitleTextBlock.Text += $" v{version.Major}.{version.Minor}.{version.Build}";
+
             if (DataContext == null)
                 return;
 
