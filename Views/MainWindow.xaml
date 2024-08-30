@@ -30,7 +30,6 @@
             <Setter Property="Background" Value="#2C2C2C" />
             <Setter Property="BorderBrush" Value="White" />
             <Setter Property="Foreground" Value="#E0E0E0" />
-            <Setter Property="FontSize" Value="20" />
             <Setter Property="Margin" Value="5" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>

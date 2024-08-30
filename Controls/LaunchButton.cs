@@ -1,51 +1,123 @@
 ﻿using Quickee.Models;
+using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Image = System.Windows.Controls.Image;
+using System.Windows.Navigation;
 
 namespace Quickee.Controls
 {
-    internal class LaunchButton : Button
+    internal class LaunchButton : Border
     {
-        public LaunchButton(string name, string launchPath, string launchArgs="", string iconPath="")
+        public static readonly DependencyProperty ForegroundProperty =
+            DependencyProperty.Register("Foreground", typeof(Brush), typeof(LaunchButton), new PropertyMetadata(Brushes.Black));
+
+        public Brush Foreground
         {
-            Grid grid = new Grid();
+            get => (Brush)GetValue(ForegroundProperty);
+            set => SetValue(ForegroundProperty, value);
+        }
 
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+        private readonly ButtonInfo _buttonInfo;
+        private readonly ICommand _command;
 
-            ImageSource? iSource = null;
+        public LaunchButton(ButtonInfo buttonInfo)
+        {
+            _buttonInfo = buttonInfo;
 
-            if (!string.IsNullOrEmpty(iconPath))
-                iSource = new BitmapImage(new Uri(iconPath, UriKind.RelativeOrAbsolute));
+            _command = new RelayCommand(Launch, CanLaunch);
+
+            Style = (Style)Application.Current.MainWindow.TryFindResource("DarkLaunchButton");
+            Child = GetButton();
+        }
+
+        private Button GetButton()
+        {
+            Button button = new Button()
+            {
+                Command = _command,
+
+                Content = new StackPanel
+                {
+                    Children =
+                    {
+                        new TextBlock
+                        {
+                            Text = _buttonInfo.Name,
+                            Margin = new Thickness(5),
+                            FontSize = 16,
+                            Foreground = Foreground
+                        },
+                        GetIcon()
+                    }
+                },
+
+                Background = Background
+            };
+
+            return button;
+        }
+
+        private Image GetIcon()
+        {
+            System.Drawing.Icon icon;
+
+            if (!string.IsNullOrEmpty(_buttonInfo.IconPath))
+                icon = new System.Drawing.Icon(_buttonInfo.IconPath);
             else
             {
-                Icon? icon = null;
-                try
-                {
-                    icon = Icon.ExtractAssociatedIcon(launchPath);
-                }
-                catch
-                {
-                    // TODO (29 AUG 2024): We should default the icon here
-                }
-                if (icon != null)
-                    iSource = Imaging.CreateBitmapSourceFromHIcon(
-                        icon.Handle,
-                        Int32Rect.Empty,
-                        BitmapSizeOptions.FromEmptyOptions());
+                try { icon = System.Drawing.Icon.ExtractAssociatedIcon(_buttonInfo.IconPath) ?? System.Drawing.SystemIcons.Application; }
+                catch { icon = System.Drawing.SystemIcons.Application; }
             }
 
-            grid.Children.Add(new Label() { Content = name });
-            grid.Children.Add(new Image() { Source = iSource });
+            // Convert icon to bitmap source
+            BitmapSource bitmapSource = Imaging.CreateBitmapSourceFromHIcon(
+                icon.Handle,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
 
-            Content = grid;
-            Command = new RelayCommand(() => Process.Start(launchPath, launchArgs));
+            // Create image control and set source
+            Image imageControl = new Image
+            {
+                Source = bitmapSource,
+                Width = 32,
+                Height = 32
+            };
+
+            return imageControl;
+        }
+
+        private void Launch()
+            => Process.Start(_buttonInfo.LaunchPath, _buttonInfo.LaunchArgs);
+
+        private bool CanLaunch()
+            => true;
+    }
+
+    public class ButtonInfo
+    {
+        public string Name { get; set; }
+        public string LaunchPath { get; set; }
+        public string LaunchArgs { get; set; }
+        public string IconPath { get; set; }
+
+        public ButtonInfo() : this("", "", "", "") { }
+
+        public ButtonInfo(string name, string launchPath, string launchArgs = "", string iconPath = "")
+        {
+            Name = name;
+            LaunchPath = launchPath;
+            LaunchArgs = launchArgs;
+            IconPath = iconPath;
+        }
+
+        public override string ToString()
+        {
+            return $"Button {Name} | \"{LaunchPath}\" \"{LaunchArgs}\" | Icon: {IconPath}";
         }
     }
 }

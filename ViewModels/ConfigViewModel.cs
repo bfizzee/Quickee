@@ -43,16 +43,16 @@ namespace Quickee.ViewModels
                 {
                     new Tab("Config")
                     {
-                        Buttons = new List<Button>()
+                        Buttons = new List<ButtonInfo>()
                         {
                             new Explorer("YAML", _configFile)
                         }
                     },
                     new Tab("Main")
                     {
-                        Buttons = new List<Button>()
+                        Buttons = new List<ButtonInfo>()
                         {
-                            new Button("Notepad", "notepad.exe"),
+                            new ButtonInfo("Notepad", "notepad.exe"),
                         },
                     }
                 }
@@ -101,8 +101,8 @@ namespace Quickee.ViewModels
                     Columns = count
                 };
 
-                foreach(Button button in tab.Buttons)
-                    grid.Children.Add(new LaunchButton(button.Name, button.LaunchPath, button.LaunchArgs, button.IconPath));
+                foreach(ButtonInfo button in tab.Buttons)
+                    grid.Children.Add(new LaunchButton(button));
 
                 tabItem.Content = grid;
 
@@ -126,38 +126,20 @@ namespace Quickee.ViewModels
     class Tab
     {
         public string Name { get; set; }
-        public IList<Button> Buttons { get; set; }
+        public IList<ButtonInfo> Buttons { get; set; }
 
         public Tab() : this("") { }
 
         public Tab(string name)
         {
             Name    = name;
-            Buttons = new List<Button>();
+            Buttons = new List<ButtonInfo>();
         }
     }
 
-    class Explorer : Button
+    class Explorer : ButtonInfo
     {
         public Explorer(string name, string filePath, string iconPath="")
             : base(name, "explorer.exe", filePath, iconPath) { }
-    }
-
-    class Button
-    {
-        public string Name { get; set; }
-        public string LaunchPath { get; set; }
-        public string LaunchArgs { get; set; }
-        public string IconPath { get; set; }
-
-        public Button() : this("", "", "", "") { }
-
-        public Button(string name, string launchPath, string launchArgs="", string iconPath="")
-        {
-            Name       = name;
-            LaunchPath = launchPath;
-            LaunchArgs = launchArgs;
-            IconPath   = iconPath;
-        }
     }
 }
