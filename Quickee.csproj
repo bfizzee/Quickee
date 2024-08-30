@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Quickee.ico" />
     <None Remove="Quickee.png" />
   </ItemGroup>
 
@@ -25,6 +26,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\CommonUtils\CommonUtils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Quickee.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
