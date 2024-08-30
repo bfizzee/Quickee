@@ -45,7 +45,7 @@ namespace Quickee.ViewModels
                     {
                         Buttons = new List<ButtonInfo>()
                         {
-                            new Explorer("YAML", _configFile)
+                            new ButtonInfo("YAML", "explorer.exe", _configFile)
                         }
                     },
                     new Tab("Main")
@@ -135,11 +135,5 @@ namespace Quickee.ViewModels
             Name    = name;
             Buttons = new List<ButtonInfo>();
         }
-    }
-
-    class Explorer : ButtonInfo
-    {
-        public Explorer(string name, string filePath, string iconPath="")
-            : base(name, "explorer.exe", filePath, iconPath) { }
     }
 }
