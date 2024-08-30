@@ -67,6 +67,6 @@
                     WindowChrome.IsHitTestVisibleInChrome="True" />
             </Grid>
         </Border>
-        <TabControl x:Name="MainTabs" />
+        <TabControl x:Name="MainTabs" Background="Transparent" />
     </DockPanel>
 </Window>
