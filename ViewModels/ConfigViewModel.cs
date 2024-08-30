@@ -115,30 +115,4 @@ namespace Quickee.ViewModels
             }
         }
     }
-
-    class Configuration
-    {
-        public IDictionary<string, string> Config { get; set; }
-        public IList<Tab> Tabs { get; set; }
-
-        public Configuration()
-        {
-            Config = new Dictionary<string, string>();
-            Tabs   = new List<Tab>();
-        }
-    }
-
-    class Tab
-    {
-        public string Name { get; set; }
-        public IList<ButtonInfo> Buttons { get; set; }
-
-        public Tab() : this("") { }
-
-        public Tab(string name)
-        {
-            Name    = name;
-            Buttons = new List<ButtonInfo>();
-        }
-    }
 }
