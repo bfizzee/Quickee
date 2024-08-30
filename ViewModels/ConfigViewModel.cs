@@ -9,6 +9,11 @@ using YamlDotNet.Serialization;
 
 namespace Quickee.ViewModels
 {
+    public static class KnownPaths
+    {
+        public static string Explorer => @"C:\Windows\explorer.exe";
+    }
+
     class ConfigViewModel
     {
         private static readonly string _dataFolder = UtilityPaths.LocalAppData;
