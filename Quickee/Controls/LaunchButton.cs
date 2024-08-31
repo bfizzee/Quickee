@@ -2,6 +2,7 @@
 using Quickee.ViewModels;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -67,7 +68,7 @@ namespace Quickee.Controls
         {
             System.Drawing.Icon icon;
 
-            if (!string.IsNullOrEmpty(_buttonInfo.IconPath))
+            if (!string.IsNullOrEmpty(_buttonInfo.IconPath) && File.Exists(_buttonInfo.IconPath))
                 icon = new System.Drawing.Icon(_buttonInfo.IconPath);
             else
             {
