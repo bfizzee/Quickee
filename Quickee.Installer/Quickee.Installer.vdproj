@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_ABDEDCAE208E4748B7715904DA93AE91"
+        "MsmKey" = "8:_C202898B7D30488597ADE02610B18E20"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -43,6 +43,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -59,6 +75,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -98,9 +122,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ABDEDCAE208E4748B7715904DA93AE91"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C202898B7D30488597ADE02610B18E20"
             {
-            "SourcePath" = "8:..\\bin\\Debug\\net8.0-windows\\Quickee.ico"
+            "SourcePath" = "8:..\\Quickee\\Quickee.ico"
             "TargetName" = "8:Quickee.ico"
             "Tag" = "8:"
             "Folder" = "8:_456E1B2CB6DC4926B23CDCC2884FC706"
@@ -185,15 +209,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quickee"
-        "ProductCode" = "8:{79D9BE75-CEAF-4120-BE29-8F769DD7DC39}"
-        "PackageCode" = "8:{F61FAE94-806B-4AE7-9F8B-D25347A30B59}"
+        "ProductCode" = "8:{73B5AD0D-83AD-447C-92CF-4FA1841307EA}"
+        "PackageCode" = "8:{6430C64D-77CE-4D4A-B70E-A6751131A121}"
         "UpgradeCode" = "8:{57B52E68-AA0C-4ED5-B694-66C3891495BA}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:bfizzee"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -203,7 +227,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:A software macro pad launcher"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_ABDEDCAE208E4748B7715904DA93AE91"
+        "ARPPRODUCTICON" = "8:_C202898B7D30488597ADE02610B18E20"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -317,7 +341,7 @@
             "Target" = "8:_D50A76CE96B44275AF9F2E84E3BFE8EC"
             "Folder" = "8:_115273104433428AA3A1B003742DF61A"
             "WorkingFolder" = "8:_456E1B2CB6DC4926B23CDCC2884FC706"
-            "Icon" = "8:_ABDEDCAE208E4748B7715904DA93AE91"
+            "Icon" = "8:_C202898B7D30488597ADE02610B18E20"
             "Feature" = "8:"
             }
         }
@@ -721,7 +745,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D50A76CE96B44275AF9F2E84E3BFE8EC"
             {
-            "SourcePath" = "8:..\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\Quickee\\obj\\Debug\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_456E1B2CB6DC4926B23CDCC2884FC706"
