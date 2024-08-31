@@ -1,5 +1,4 @@
-﻿using Fitz.Utilities;
-using Quickee.Controls;
+﻿using Quickee.Controls;
 using Quickee.Models;
 using System.Diagnostics;
 using System.IO;
@@ -16,7 +15,7 @@ namespace Quickee.ViewModels
 
     class ConfigViewModel
     {
-        private static readonly string _dataFolder = UtilityPaths.LocalAppData;
+        private static readonly string _dataFolder = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\bfizzee\\Quickee";
 
         private static readonly string _configFile = $"{_dataFolder}\\config.yaml";
         private static readonly string _iconsFolder = $"{_dataFolder}\\Icons";
