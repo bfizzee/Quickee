@@ -72,7 +72,7 @@ namespace Quickee.Controls
                 icon = new System.Drawing.Icon(_buttonInfo.IconPath);
             else
             {
-                try { icon = System.Drawing.Icon.ExtractAssociatedIcon(_buttonInfo.IconPath) ?? System.Drawing.SystemIcons.Application; }
+                try { icon = System.Drawing.Icon.ExtractAssociatedIcon(_buttonInfo.LaunchPath) ?? System.Drawing.SystemIcons.Application; }
                 catch { icon = System.Drawing.SystemIcons.Application; }
             }
 
